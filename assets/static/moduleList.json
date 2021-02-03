@@ -1,0 +1,171 @@
+{
+  "data": {
+    "shapes": [
+      {
+        "title": "cube",
+        "name": "矩形",
+        "code": 0,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "矩形{height:80px;width:80px;background-position: 0 -82px;}矩形-Y{height:80px;width:80px;background-position: -80px -82px;}",
+        "module": "shape"
+      },
+      {
+        "title": "ball",
+        "name": "球",
+        "code": 3,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "球-Y{height:80px;width:80px;background-position: -241px -82px;}\n@mixin 球{height:80px;width:80px;background-position: -160px -82px;}",
+        "module": "shape"
+      },
+      {
+        "title": "cylinder",
+        "name": "圆柱",
+        "code": 1,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "圆柱{height:80px;width:80px;background-position: -480px 0;}\n@mixin 圆柱-Y{height:80px;width:80px;background-position: -560px 0;}",
+        "module": "shape"
+      },
+      {
+        "title": "prismatic",
+        "name": "棱柱",
+        "code": 5,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "棱柱{height:80px;width:80px;background-position: -321px -82px;}\n@mixin 棱柱-Y{height:80px;width:80px;background-position: -399px -81px;}",
+        "module": "shape"
+      },
+      {
+        "title": "cone",
+        "name": "圆锥",
+        "code": 2,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "圆锥{height:200px;width:200px;background-position: -532px -138px;}\n@mixin 圆锥-Y{height:200px;width:200px;background-position: -313px -170px;}",
+        "module": "shape"
+      },
+      {
+        "title": "pyramid",
+        "name": "三棱锥",
+        "code": 6,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "三棱柱{height:80px;width:80px;background-position: -160px 0;}三棱柱-Y{height:80px;width:80px;background-position: -240px 0;}",
+        "module": "shape"
+      },
+      {
+        "title": "doughnut",
+        "name": "甜甜圈",
+        "code": 4,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "甜甜圈{height:80px;width:80px;background-position: 0 0;}甜甜圈-Y{height:80px;width:80px;background-position: -80px 0;}",
+        "module": "shape"
+      },
+      {
+        "title": "hollowcylinder",
+        "name": "空心圆柱",
+        "code": 7,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "空心圆柱{height:80px;width:80px;background-position: -640px 0;}\n@mixin 空心圆柱-Y{height:80px;width:80px;background-position: -720px 0;}",
+        "module": "shape"
+      },
+      {
+        "title": "triprism",
+        "name": "直三棱柱",
+        "code": 8,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "直三棱柱{height:80px;width:80px;background-position: -320px 0;} 直三棱柱-Y{height:80px;width:80px;background-position: -400px 0;}",
+        "module": "shape"
+      },
+      {
+        "title": "fivepointstar",
+        "name": "五角星",
+        "code": 11,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "",
+        "module": "stl"
+      },
+      {
+        "title": "text",
+        "name": "文字",
+        "code": 222,
+        "url": "../img/3dPrinting/shapes.png",
+        "sprint": "",
+        "module": "text"
+      }
+    ],
+    "stl": [
+      {
+        "title": "standing",
+        "name": "站立",
+        "url": "../img/3dPrinting/cube.png"
+      },
+      {
+        "title": "climbing",
+        "name": "爬",
+        "url": "../img/3dPrinting/cylinder.png"
+      },
+      {
+        "title": "lying",
+        "name": "躺",
+        "url": "../img/3dPrinting/cone.png"
+      },
+      {
+        "title": "sitting",
+        "name": "坐",
+        "url": "../img/3dPrinting/ball.png"
+      },
+      {
+        "title": "tyrannosaurusRex",
+        "name": "霸王龙",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "bulbasaur",
+        "name": "妙蛙种子",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "charmander",
+        "name": "小火龙",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "chikorita",
+        "name": "菊草叶",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "pikachu",
+        "name": "皮卡丘",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "squirtle",
+        "name": "杰尼龟",
+        "url": "../img/3dPrinting/doughnut.png"
+      },
+      {
+        "title": "totodile",
+        "name": "小锯鳄",
+        "url": "../img/3dPrinting/doughnut.png"
+      }
+    ],
+    "house": [
+      {
+        "name": "砖头",
+        "title": "wall",
+        "id": "00",
+        "url": "../img/3dPrinting/sprint_cube.png"
+      },
+      {
+        "name": "窗户",
+        "title": "window",
+        "id": "01",
+        "url": "../img/3dPrinting/sprint_window.png"
+      },
+      {
+        "name": "门",
+        "title": "door",
+        "id": "02",
+        "url": "../img/3dPrinting/sprint_door.png"
+      }
+      ]
+  }
+}

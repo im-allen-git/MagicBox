@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>我的模型</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+        <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+        <link type="text/css" rel="stylesheet" href="../css/common.css">
+        <link type="text/css" rel="stylesheet" href="../css/swiper.min.css">
+        <link type="text/css" rel="stylesheet" href="../css/dialog.css">
+        <!--	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">-->
+        <link type="text/css" rel="stylesheet" href="../css/3DMyaccount.css">
+        <script src='../js/jquery.min.js'></script>
+        <script src='../js/swiper.min.js'></script>
+        <script src='../js/dialog.js'></script>
+        <script src='../js/common.js'></script>
+        <script src='../js/my_module.js'></script>
+    </head>
+    <body>
+        <div class="my_module container">
+            
+            <div class="top_menu row clearfix">
+                <div class="top_menu_btn mine col-xs-4 text-left" onclick=" goPage(3) "><i class="iconfont">&#xe7d5;</i> 模型库</div>
+                <div class="top_menu_btn bought col-xs-4 text-center">我的模型</div>
+                <div class="top_menu_btn local col-xs-4 text-right" onclick=" goPage(4) "><i class="iconfont">&#xe691;</i> 创建模型</div>
+            </div>
+            <div class="main_wrapper">
+                <div class="container">
+                    <div class="sec_menu row clearfix">
+                        <div class="sec_menu_btn mine col-xs-4" onclick="showCurrentModule(0)">
+                            <div class="sec_btn active_menu">我的创造</div>
+                        </div>
+                        <div class="sec_menu_btn bought col-xs-4" onclick="showCurrentModule(1)">
+                            <div class="sec_btn">已购模型</div>
+                        </div>
+                        <div class="sec_menu_btn local col-xs-4" onclick="showCurrentModule(2)">
+                            <div class="sec_btn">SD卡模型</div>
+                        </div>
+                    </div>
+                    <div class="content_wrapper row clearfix" id="contentModule">
+                        <div class="mine_content module_content">
+                            <div class="no_module">您还没有创建模型哦<br><span onclick=" goPage(4) ">点击这里创建模型</span></div>
+                        </div>
+                        <div class="bought_content module_content">
+                            <div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>
+                        </div>
+                        <div class="local_content module_content">
+                            <div class="no_module">您的SD卡中，还没有模型哦</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="module_param_bg" onclick="thisParamInfo(2)"></div>
+        <div class="module_param">
+            <div class="param_top_title">模型数据</div>
+            <div class="each_param clearfix">
+                <div class="param_title">打印尺寸(MM)</div>
+                <div class="param_detail" id="XYZ"></div>
+            </div>
+            <div class="each_param clearfix">
+                <div class="param_title">切片大小</div>
+                <div class="param_detail" id="moduleSize"></div>
+            </div>
+            <div class="each_param clearfix">
+                <div class="param_title">消耗材料</div>
+                <div class="param_detail" id="useMaterial"></div>
+            </div>
+            <div class="each_param clearfix">
+                <div class="param_title">总打印时间</div>
+                <div class="param_detail param_time" id="printDuration"></div>
+            </div>
+            <div class="print_btn" onclick="thisParamInfo(1)"></div>
+            <div class="note">文件生成中，请等待</div>
+            <div class="tip">当前APP只适用于小型模型的上传打印，2MB以上的模型，建议适用SD卡上传打印 <br>
+                <i class="showDetail" onclick="showTipDetail(0)">点击这里查看适用方法 >></i></div>
+            <img src="../img/3dPrinting/btn_close.png" class="imgBtn param_close" onclick="thisParamInfo(2)">
+            <div class="tip_detail text-left container">
+                <div class="top_menu row clearfix">
+                    <div class="top_menu_btn back text-left iconfont" onclick="showTipDetail(1);">&#xe720;</div>
+                    <div class="top_menu_btn top_title col-xs-12 text-center">SD卡快速打印模型方法</div>
+                </div>
+                <div class="row clearfix" style="margin-top: .6rem;">
+                    <div class="col-xs-12 each_tip_title">1.取出Magic Box 3D打印机中的SD卡</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper1"><img src="../img/3dPrinting/sd_print_method1.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">2.将取出的打印机的SD卡插入电脑SD卡槽中</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper2"><img src="../img/3dPrinting/sd_print_method2.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">3.另使用USB数据线将安卓手机与电脑连接，在电脑的设备和驱动器中找到手机中模型文件夹位置: Download>print3D</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper3"><img src="../img/3dPrinting/sd_print_method3.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">4.将print3D文件夹中的模型文件(.gco)复制到SD卡中</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper4"><img src="../img/3dPrinting/sd_print_method4.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix" style="margin-bottom: .2rem">
+                    <div class="col-xs-12 each_tip_title">5. 复制成功后，拔下SD卡插入到Magic Box 3D打印机中，在操控面板上选择模型并打印；或者在App 我的模型中选择 已存入SD卡的模型进行打印</div>
+                </div>
+            </div>
+        </div>
+        <div class="sd_module_param">
+            <div class="param_top_title">模型数据</div>
+            <div class="each_param clearfix">
+                <div class="param_title">切片大小</div>
+                <div class="param_detail" id="sdmoduleSize"></div>
+            </div>
+            <div class="print_btn" onclick="thisSDParamInfo(1)"></div>
+<!--            <div class="tip">当前打印机只适用于小模型打印 <i class="showDetail" onclick="showTipDetail(0)">详情</i></div>-->
+            <div class="tip">当前APP只适用于小型模型的上传打印，2MB以上的模型，建议适用SD卡上传打印 <br>
+                <i class="showDetail" onclick="showTipDetail(0)">点击这里查看适用方法 >></i></div>
+            <img src="../img/3dPrinting/btn_close.png" class="imgBtn param_close" onclick="thisSDParamInfo(2)">
+            <div class="tip_detail text-left container">
+                <div class="top_menu row clearfix">
+                    <div class="top_menu_btn back text-left iconfont" onclick="showTipDetail(1);">&#xe720;</div>
+                    <div class="top_menu_btn top_title col-xs-12 text-center">SD卡快速打印模型方法</div>
+                </div>
+                <div class="row clearfix" style="margin-top: .6rem;">
+                    <div class="col-xs-12 each_tip_title">1.取出Magic Box 3D打印机中的SD卡</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper1"><img src="../img/3dPrinting/sd_print_method1.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">2.将取出的打印机的SD卡插入电脑SD卡槽中</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper2"><img src="../img/3dPrinting/sd_print_method2.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">3.另使用USB数据线将安卓手机与电脑连接，在电脑的设备和驱动器中找到手机中模型文件夹位置: Download>print3D</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper3"><img src="../img/3dPrinting/sd_print_method3.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xs-12 each_tip_title">4.将print3D文件夹中的模型文件(.gco)复制到SD卡中</div>
+                    <div class="col-xs-12"><div class="img_wrapper img_wrapper4"><img src="../img/3dPrinting/sd_print_method4.png" alt=""></div></div>
+                </div>
+                <div class="row clearfix" style="margin-bottom: .2rem">
+                    <div class="col-xs-12 each_tip_title">5. 复制成功后，拔下SD卡插入到Magic Box 3D打印机中，在操控面板上选择模型并打印；或者在App 我的模型中选择 已存入SD卡的模型进行打印</div>
+                </div>
+            </div>
+        </div>
+        <div class="note_error">
+            <div class="save_name_title">提示</div>
+            <div class="save_name_tip">删除失败，请重试</div>
+        </div>
+        <div id="loading_data"><img src="../img/loading.gif" alt=""></div>
+    </body>
+    
+</html>

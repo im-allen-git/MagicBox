@@ -1,0 +1,23 @@
+body{background:#4E92EF; font-size:.17rem;color:#FFFFFF}
+.top_menu{border-bottom:1px solid #92CCFFFF}
+.top_menu .top_menu_btn{padding-top: .14rem; padding-bottom: .14rem; font-size:.17rem;}
+.main_wrapper .top_menu .back { font-size: .25rem; line-height: .45rem; padding-top: 0; padding-bottom: 0; padding-left: 7px;}
+.top_menu_btn a { color: #fff; }
+.title { padding: 15px; }
+.good_wrapper,.each_module_wrapper { background: #FFF; border-radius: 5px; padding: 5px; }
+.good_wrapper .col-xs-8{width: 65%;}
+.img_wrapper { position: relative; width: 115px; height: 115px; background: linear-gradient(0deg,rgba(139,213,234,1) 0%,rgba(170,227,249,1) 100%); }
+.img_wrapper img{position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 100%; max-height: 100%;}
+.good_title { font-size: .13rem; color: #426A8D; line-height: .15rem; }
+.good_price { color: #FF3939; font-size: .2rem; padding: 10px 0; }
+.good_buy { background-image: url(../img/3dPrinting/btn_shop_buy.png); background-size: contain; background-repeat: no-repeat; height: .44rem; }
+.each_good { margin-bottom: 10px; }
+
+.module .img_wrapper{width: 100%;margin: auto;}
+.module .each_module:nth-child(2n){padding-left: 5px;}
+.module .each_module:nth-child(2n+1){padding-right: 5px;}
+.module .good_buy { background-position: center; }
+
+@media only screen and (max-width: 369px) {
+    .good_wrapper .col-xs-8{width:59%;}
+}

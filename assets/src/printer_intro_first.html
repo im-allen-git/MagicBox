@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>关联打印机</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+  <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+  <link type="text/css" rel="stylesheet" href="../css/common.css">
+  <link type="text/css" rel="stylesheet" href="../css/printer.css">
+  <script src='../js/common.js'></script>
+</head>
+<body>
+<div class="my_module container">
+  <div class="top_menu row clearfix">
+    <div class="top_menu_btn back col-xs-4 text-left" onclick="goPage(3)">跳过</div>
+    <div class="top_menu_btn menu_title col-xs-4 text-center">3D打印机</div>
+    <div class="top_menu_btn connect_state col-xs-4 text-right"><i class="connect_status"></i>未连接</div>
+  </div>
+  <div class="main_wrapper row">
+    <div class="top_wrapper">
+      <div class="col-xs-6 wifi_ico_wrapper">
+        <img src="../img/wifi_ico.png" alt="">
+      </div>
+      <div class="col-xs-6 top_right_wrapper">
+        <div>WiFi连接</div>
+      </div>
+    </div>
+    <div class="connect_btn text-center" onclick="goPage('61')">
+      <img src="../img/btn_connect.png" alt="">
+    </div>
+    <div class="intro">
+      <div class="col-xs-12 text-left">1.确定手机已链接WiFi网络</div>
+      <div class="col-xs-12 text-left">2.确定3D打印机已启用WiFi功能</div>
+      <div class="col-xs-12 text-left">3.点击连接，输入密码关联设备</div>
+      <div class="col-xs-12 text-left">4.连接3D打印机后，进入打印页面选择并打印</div>
+    </div>
+  </div>
+</div>
+</body>
+<script src='../js/jquery.min.js'></script>
+<script src='../js/common.js'></script>
+<script>
+  function connectStatus(flag){
+    if(flag>0){
+      $(".connect_state").addClass("connected");
+      $(".connect_state").html('<i class="connect_status"></i>已连接');
+    }
+  }
+</script>
+</html>

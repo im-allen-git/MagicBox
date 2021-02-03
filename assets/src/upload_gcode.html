@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MagicBox</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+<!--	<link rel="stylesheet" type="text/css" href="../css/dialog.css"/>-->
+	<link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+	<link type="text/css" rel="stylesheet" href="../css/common.css">
+	<style>
+		body,.main_wrapper,#container,.list_stl{height: 100%;}
+		#container {
+			padding:0 15px;
+			background: #79B1EA; /* Old browsers */
+			background: -moz-linear-gradient(top,  #79B1EA 0%, #4E92EF 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  #79B1EA 0%,#4E92EF 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, #79B1EA 0%,#4E92EF 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#79B1EA', endColorstr='#4E92EF',GradientType=0 ); /* IE6-9 */
+		}
+		.list_stl{overflow: auto}
+		.child_title { text-align: center; line-height: 30px;position: fixed; top: 0; left: 0; right: 0; }
+		.list_stl .each_stl {margin: 10px auto;}
+		.list_stl .each_stl.index_0 {margin-top: 30px;}
+		.img_wrapper { position: relative; width: 60px; height: 60px; float: left;background:#eee}
+		.img_wrapper img{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 100%; max-height: 100%; }
+		.name { float: left; line-height: 60px; padding: 0 10px; }
+		.each_stl.active_stl {border:1px solid red;}
+		.note_error {  display: none; position: absolute; top: 50%; left: 50%; z-index: 4; border-radius: .35rem; width: 3.15rem; height: 1rem; margin-top: -.5rem; margin-left: -1.575rem; text-align: center; background: rgba(185,239,255,1); box-shadow: 0px 0px 11px 0px rgba(34,87,145,0.2), 0px 0px 125px 0px rgba(56,154,240,1) inset;}
+		.save_name_title { width: 1.47rem; height: .33rem; background:linear-gradient(0deg,rgba(85,182,227,1) 0%,rgba(54,129,227,1) 100%); border-radius: 0 0 .15rem .15rem; line-height: .33rem; margin: auto; font-size: .18rem;    color: #323232;}
+		.save_name_tip{margin: .15rem 0;color:red}
+		.submit_wrapper {display:none; position: fixed; bottom: 0; left: 0; right: 0; margin: auto; text-align: center; }
+		.btn.submit_btn { background: url(../img/3dPrinting/btn_yes1.png); background-repeat: no-repeat; background-size: contain; width: 100px; height: 50px; margin: auto; }
+		.note_error_bg {display:none;position: fixed;top: 0;right: 0;left: 0;bottom:0;background: #000; opacity: .3;z-index: 3;}
+		.no_module { margin: 100px auto; width: 100%; text-align: center; line-height: 30px;}
+		.no_module span { color: #FF8828FF; }
+	</style>
+</head>
+
+<body>
+<div class="main_wrapper">
+	<div id="container" class="clearfix">
+		<div class="list_stl">
+		</div>
+		<div class="submit_wrapper">
+			<div class="btn submit_btn" onclick="submitStl()"></div>
+		</div>
+	</div>
+</div>
+<div class="note_error_bg"></div>
+<div class="note_error">
+	<div class="save_name_title">提示</div>
+	<div class="save_name_tip">上传失败，请重试</div>
+</div>
+</body>
+
+<script src='../js/jquery.min.js'></script>
+<script src='../js/upload_gcode.js'></script>
+</html>

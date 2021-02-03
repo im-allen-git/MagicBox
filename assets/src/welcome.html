@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模型库</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <link type="text/css" rel="stylesheet" href="../css/swiper.min.css">
+    <style>
+        .main_wrapper,html,body,.swiper-container{width:100%;height:100%;}
+        .main_wrapper{ background: #79B1EA; /* Old browsers */
+            background: -moz-linear-gradient(top,  #4E92EF 0%, #79B1EA 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  #4E92EF 0%,#79B1EA 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #4E92EF 0%,#79B1EA 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4E92EF', endColorstr='#79B1EA',GradientType=0 ); /* IE6-9 */
+            padding-top:50px;
+            
+}
+        
+        .logo { width: 100px;height: 107.5px; margin: auto; display: block;}
+        .title {font-size: 20px;color: #FFFFFF;font-weight: bold;text-align: center;padding-top: 15px}
+        .subtitle {font-size: 13px;color: #CFECFF;text-align: center;padding-top: 5px;letter-spacing:5px}
+    </style>
+</head>
+<body>
+<div class="main_wrapper ">
+    <img src="../img/logo.png" alt="" class="logo">
+    <div class="title">Magic Box</div>
+    <div class="subtitle">开启儿童智慧第一步</div>
+</div>
+</body>
+<script src='../js/jquery.min.js'></script>
+<script src='../js/common.js'></script>
+
+<script>
+    $( function () {
+
+        setTimeout( function () {
+                     log("firstAccess === "+firstAccess)
+                       if(firstAccess<1){
+                          goPage(9);
+                       }
+                       else{
+                           goPage(3);
+                       }
+                   }, 3000 );
+       
+    } );
+
+   
+     
+</script>
+</html>

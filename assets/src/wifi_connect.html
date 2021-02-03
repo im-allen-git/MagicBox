@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关联打印机</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <link type="text/css" rel="stylesheet" href="../css/wifi_connect.css">
+</head>
+<body>
+<div class="my_module container">
+    <div class="top_menu row clearfix">
+        <div class="top_menu_btn back col-xs-12 text-left" onclick="goPage(5)"><i
+                class="iconfont">&#xe720;</i></div>
+    </div>
+    <div class="main_wrapper row">
+        <div class="top_wrapper clearfix">
+            <div class="col-xs-12 wifi_ico_wrapper_input">
+                <img src="../img/wifi_ico.png" alt="">
+            </div>
+            <div class="col-xs-12 wifi_ico_wrapper_title text-center">输入WiFi密码</div>
+        </div>
+        <div class="wifi_info_wrapper clearfix">
+            <div class="col-xs-12">
+                <div class="wifi_title">WiFi名称</div>
+            </div>
+            <div class="col-xs-12">
+                <div class="wifi_info" id="wifiName"></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="wifi_title">WiFi密码</div>
+            </div>
+            <div class="col-xs-12">
+                <div class="wifi_info" class="wifi_pass">
+                    <input type="password" id="wifiPass" onfocus="clearValidate()" value="">
+                    <i class="iconfont" id="passwordHide" onclick="switchPwd(0)">&#xe685;</i>
+                    <i class="iconfont" id="passwordShow" onclick="switchPwd(1)">&#xe612;</i>
+                    <div class="wifi_pass_validate">请输入密码！</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="imgWrapper connect_btn_wrapper">
+                <img src="../img/btn_connect.png" alt="" class="" onclick="wifiPass()">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src='../js/jquery.min.js'></script>
+<script src='../js/common.js'></script>
+<script>
+    
+    
+    function wirteWifiInfo(ssid, bssid){
+        $("#wifiName").text(ssid)
+    }
+    
+//input标签 软键盘打开和收起
+	$( "#wifiPass" ).focus( function () {
+	    //当软键盘弹出，在这里面操作
+		$( ".my_module" ).css( { "margin-top": "-10%" } );
+	} );
+	$( "#wifiPass" ).blur( function () {
+	    //当软键盘收起，在这里面操作
+        $( ".my_module" ).css( { "margin-top": "0" } );
+	} );
+    //显示隐藏对应的switchPwd()方法:
+    function switchPwd(type) {
+        var showPwd = $("#wifiPass");
+        if(type == 0){
+            $("#passwordHide").hide();
+            $("#passwordShow").show();
+            showPwd.prop('type','text');
+        }
+        else{
+            $("#passwordHide").show();
+            $("#passwordShow").hide();
+            showPwd.prop('type','password');
+        }
+    }
+    function wifiName(wifiname){
+    console.log("+++++++++"+wifiname)
+      $("#wifiName").text(wifiname)
+    }
+    var wifipassTimeout;
+    function wifiPass(){
+      var wifipass = $("#wifiPass").val();
+      clearValidate();
+      if(wifipass){
+        //var wifipassResult = js.sendWifiPass(wifipass);
+        webkit.messageHandlers.sendWifiPass.postMessage(wifipass);
+
+      }
+      else{
+        $(".wifi_pass_validate").show();
+        wifipassTimeout = setTimeout(function(){
+          $(".wifi_pass_validate").hide();
+        },1500)
+      }
+
+    }
+    function clearValidate(){
+      clearTimeout(wifipassTimeout);
+      $(".wifi_pass_validate").hide();
+    }
+    function checkPass(flag,msg){ //0：失败 1：成功
+        if(flag == 1){
+<!--            $("#loading_data").hide();-->
+<!--            $("#loading_data .checking").text("正在连接中...");-->
+        }
+        else if(flag==0){
+<!--            $("#loading_data .checking").text("连接失败，请检查密码！");-->
+        }
+        else if(flag==3){
+
+        }
+    }
+</script>
+</html>

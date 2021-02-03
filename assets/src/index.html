@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模型库</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <link type="text/css" rel="stylesheet" href="../css/swiper.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/index_3d.css">
+    <script src='../js/jquery.min.js'></script>
+    <script src='../js/swiper.min.js'></script>
+    <!-- 引入要放在后面 -->
+    <script src='../js/common.js'></script>
+    <script src='../js/index_3d.js'></script>
+
+
+</head>
+<body>
+<div class="main_wrapper ">
+    <div class="container">
+        <div class="top_menu row clearfix">
+            <div class="top_menu_btn printer col-xs-4 text-left" onclick=" goPage(6) "><i class="iconfont">&#xe7e2;</i>
+                3D打印机
+            </div>
+            <div class="top_menu_btn modules col-xs-4 text-center">模型库</div>
+            <div class="top_menu_btn mymodule col-xs-4 text-right" onclick=" goPage(1) "><i
+                    class="iconfont">&#xe7ae;</i> 我的模型
+            </div>
+        </div>
+
+        <div class="row clearfix modules_slides">
+            <!-- Add Arrows -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="img_wrapper">
+                            <img src="../models/stl/localModules/hello_kitty.png" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_wrapper">
+                            <img src="../models/stl/localModules/chamaeleo_t.png" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_wrapper">
+                            <img src="../models/stl/localModules/hand_ok.png" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_wrapper">
+                            <img src="../models/stl/localModules/jet_pack_bunny.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="print_btn outer_printbtn" onclick="thisParamInfo(0)"></div>
+            <div class="note">*现有模型可直接打印</div>
+            <div class="buttons_right">
+                <div class="btn_create_module btn_right" onclick=" goPage(4) "><span>创建模型</span></div>
+                <div class="btn_module_param btn_right" onclick="thisParamInfo(0) "><span>模型参数</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="module_param_bg" onclick="thisParamInfo(2)"></div>
+<div class="module_param">
+    <div class="param_top_title">模型数据</div>
+    <div class="each_param clearfix">
+        <div class="param_title">打印尺寸(MM)</div>
+        <div class="param_detail" id="XYZ"></div>
+    </div>
+    <div class="each_param clearfix">
+        <div class="param_title">切片大小</div>
+        <div class="param_detail" id="moduleSize"></div>
+    </div>
+    <div class="each_param clearfix">
+        <div class="param_title">消耗材料</div>
+        <div class="param_detail" id="useMaterial"></div>
+    </div>
+    <div class="each_param clearfix">
+        <div class="param_title">总打印时间</div>
+        <div class="param_detail param_time" id="printDuration"></div>
+    </div>
+    <div class="print_btn" onclick="thisParamInfo(1)"></div>
+    <img src="../img/3dPrinting/btn_close.png" class="imgBtn param_close" onclick="thisParamInfo(2)">
+</div>
+
+<div id="loading_data"><img src="../img/loading.gif" alt=""></div>
+
+</body>
+
+</html>

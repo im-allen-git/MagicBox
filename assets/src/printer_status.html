@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>打印进度</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+  <link rel="stylesheet" type="text/css" href="../css/dialog.css"/>
+  <link type="text/css" rel="stylesheet" href="../css/font/iconfont.css">
+  <link type="text/css" rel="stylesheet" href="../css/common.css">
+  <link type="text/css" rel="stylesheet" href="../css/printer_status.css">
+  <script src='../js/common.js'></script>
+
+</head>
+<body>
+<div class="container">
+  <div class="top_menu row clearfix">
+    <div class="top_menu_btn back text-left iconfont" onclick="goPage(5);">&#xe720;</div>
+    <div class="top_menu_btn top_title col-xs-12 text-center" id="file_name">文件名</div>
+  </div>
+  <div class="main_wrapper">
+    <div id="topPrinterStatus">文件上传中</div>
+    <div id="printingModule">
+      <img src="../models/stl/localModules/hand_ok.png" alt="">
+    </div>
+    <div class="processing" id="processingTime">0%</div>
+    <div class="stop_btn" id="stopPrinter" onclick="stopStartPrint()">暂停</div>
+    <div class="stop_btn" id="cancelPrinter" onclick="cancelPrint(0)">取消打印</div>
+    <div class="left_time">剩余: <i id="leftTime">00:00:00</i></div>
+  </div>
+</div>
+</body>
+<script src='../js/jquery.min.js'></script>
+<script src='../js/dialog.js'></script>
+<script>
+
+    var countDownInterval; //倒计时定义
+    var remainingTime = 0;//剩余时间
+    var initTotalTime = 0;//初始状态的总时间
+    var stopedTime = 0; //暂停时的剩余时间
+    var stopStartFlag = 0;//默认第一次点击是暂停打印
+    var topStatusInter = null;//当前状态定时器
+    var topStatusInterIndex = 1;//当前状态定时器index
+    $(function () {
+      changeTopStatus(0)
+    })
+
+    /**
+     * @param 当前状态 上传 0 或者  打印 1
+     * */
+    function changeTopStatus(type){
+      var topTxt = '';
+      if(0==type){
+        topTxt = "文件上传中."
+
+      }
+      else if(1==type){
+        clearInterval(topStatusInter)
+        topTxt = "打印中."
+      }
+      $("#topPrinterStatus").text(topTxt)
+      topStatusInter = setInterval(function(){
+        if(0 == topStatusInterIndex){
+          topStatusInterIndex++
+          $("#topPrinterStatus").text(topTxt)
+        }
+        else if(1 == topStatusInterIndex){
+          topStatusInterIndex++
+          $("#topPrinterStatus").text(topTxt+'.')
+        }
+        else  if(2 == topStatusInterIndex){
+          $("#topPrinterStatus").text(topTxt+'..')
+          topStatusInterIndex=0;
+        }
+      },1000)
+    }
+    /**
+     * @param totalTime 秒
+     */
+    function countDown(totalTime) {
+        initTotalTime = Number(totalTime);
+        remainingTime = Number(totalTime);
+        countDownIntervalFn();
+    }
+
+    function countDownIntervalFn() {
+        countDownInterval = setInterval(function () {
+            remainingTime--;
+            $("#leftTime").text(formatTime(remainingTime));
+            $("#processingTime").text(checkPercentage() + "%");
+            if (remainingTime < 1) {
+                clearInterval(countDownInterval);
+                clearInterval(topStatusInter)
+                $("#topPrinterStatus").text('打印完成')
+            }/*
+            else if(2 == remainingTime){
+              clearInterval(countDownInterval);
+            }*/
+        }, 1000);
+    }
+    function serverReturnFinal(){
+      remainingTime = 0;
+      $("#leftTime").text(formatTime(remainingTime));
+      $("#processingTime").text(checkPercentage() + "%");
+      clearInterval(countDownInterval);
+      clearInterval(topStatusInter)
+      $("#topPrinterStatus").text('打印完成')
+    }
+
+    function formatTime(totalTime) {
+        totalTime = Number(totalTime)
+        if (totalTime > 0) {
+            var h = Math.floor(totalTime / 60 / 60 % 24);
+            var m = Math.floor(totalTime / 60 % 60);
+            var s = Math.floor(totalTime % 60);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+            return h + ":" + m + ":" + s;
+        } else {
+            return "00:00:00"
+        }
+    }
+
+    function checkPercentage() {
+        var percentage = 0;
+        if (0 == remainingTime) {
+            percentage = 100
+            $("#stopPrinter,#cancelPrinter").css("visibility", "hidden");
+        } else {
+            percentage = Math.round((initTotalTime - remainingTime) * 100 / initTotalTime)
+        }
+        return percentage
+    }
+
+    /**
+     * 开始暂停打印
+     * @param type 0 暂停 1 开始
+     */
+    function stopStartPrint() {
+      var text = '是否确定暂停打印？'
+      if (0 == stopStartFlag) {
+      } else if (1 == stopStartFlag) {
+        text = "是否确定继续打印？"
+      }
+      $.dialog( {
+        type: 'confirm',
+        showTitle: false,
+        overlayClose: true,
+        dialogClass: 'removeSingleBox',
+        showClose: true,
+        contentHtml: text,
+        buttonText: {
+          ok: '确定',
+          cancel: '取消'
+        },
+        buttonClass: {
+          ok: 'removeBtn_ok',
+          cancel: 'removeBtn_cancel'
+        },
+        onClickOk: function () {
+          if (0 == stopStartFlag) {
+            stopStartFlag = 1;
+            clearInterval(countDownInterval);
+          } else if (1 == stopStartFlag) {
+            stopStartFlag = 0;
+            countDownIntervalFn();
+          }
+          var status = '';
+          stopStartFlag == 0 ? status = "暂停" : status = "开始";
+          $("#stopPrinter").text(status)
+
+        },
+        onClickCancel: function () {
+
+        }
+      } );
+
+    }
+
+    /**
+     *
+     *  @param type 0 手动cancel  无则是自动
+     */
+    function cancelPrint(type) {
+        if (0 == type) {
+            $.dialog({
+                type: 'confirm',
+                showTitle: false,
+                overlayClose: true,
+                contentHtml: '<p class="red_note">是否确定取消打印？</p>',
+                buttonText: {//按钮文本内容
+                    ok: '是',
+                    cancel: '否'
+                },
+                buttonClass: {
+                    ok: 'removeAll_ok',
+                    cancel: 'removeAll_cancel'
+                },
+                onClickOk: function () {
+                    //告诉后台取消打印
+
+                    //返回上一页 goback-1
+                    goPage(5)
+                },
+                onClickCancel: function () {
+
+                }
+            });
+        } else {
+            clearInterval(countDownInterval);
+            remainingTime = 0;
+            $("#leftTime").text(formatTime(remainingTime));
+            $("#processingTime").text("0%");
+        }
+    }
+
+    /**
+     * 如果失败，前端显示弹窗
+     */
+    function ifPrintFailed() {
+        cancelPrint();
+        $.dialog({
+            type: 'confirm',
+            showTitle: false,
+            overlayClose: true,
+            contentHtml: '<p class="red_note">打印失败，是否重试？</p>',
+            buttonText: {//按钮文本内容
+                ok: '是',
+                cancel: '否'
+            },
+            buttonClass: {
+                ok: 'removeAll_ok',
+                cancel: 'removeAll_cancel'
+            },
+            onClickOk: function () {
+                //调后端方法
+            },
+            onClickCancel: function () {
+                //返回上一页 goback-1
+                goPage(5)
+            }
+        });
+
+    }
+
+</script>
+</html>

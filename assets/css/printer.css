@@ -1,0 +1,19 @@
+.top_menu { background: #2B9CFF; color: #FFF; }
+.top_menu .top_menu_btn{padding-top: .14rem; padding-bottom: .14rem; font-size:.17rem;}
+.top_menu .back { font-size: .17rem; line-height: .45rem; padding-top: 0; padding-bottom: 0; padding-left: 7px;}
+.top_menu .back .iconfont { font-size: .25rem;}
+.top_menu_btn a { color: #fff; }
+
+.top_menu_btn.connect_state{font-size: .13rem;color:red;line-height: .175rem;}
+i.connect_status { background: red; width: .1rem; height: .1rem; border-radius: 50%; display: inline-block; margin-right: .1rem; }
+.connect_state.connected{color:lightgreen!important;}
+.connected i.connect_status {color:lightgreen!important;background: lightgreen!important; }
+
+.top_wrapper { height: 2rem; background: #2B9CFF; border-radius: 0 0 0 .4rem; }
+
+.wifi_ico_wrapper,.top_right_wrapper{height: 2rem;}
+.wifi_ico_wrapper img{ position: absolute; top: 0; bottom: 0; left: 15px; right: 0; max-width: 90%; max-height: 90%; margin: auto; }
+.top_right_wrapper div{line-height: 2rem;font-size: .15rem;color:#fff;text-align: center}
+.connect_btn{margin-top:.3rem;}
+.connect_btn img { height: .6rem; }
+.intro div { color: #426A8D; font-size: .15rem; line-height: .3rem; }

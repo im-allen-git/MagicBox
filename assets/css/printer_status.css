@@ -1,0 +1,12 @@
+.top_menu{position: relative;}
+.top_menu .top_menu_btn{padding-top: .14rem; padding-bottom: .14rem; font-size:.17rem;}
+.top_menu .back { font-size: .25rem; line-height: .45rem; padding-top: 0; padding-bottom: 0; padding-left: 7px;
+    position: absolute;left: 0;top:0;bottom:0;z-index:10}
+.top_menu_btn a { color: #fff; }
+div#topPrinterStatus { line-height: .5rem; text-align: center; color: #999999; }
+div#printingModule { position: relative; width: 2.5rem; height: 2.5rem; margin: .25rem auto; }
+div#printingModule img{position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 100%; max-height: 100%;}
+div#processingTime { text-align: center; color: #FEAC1E; font-size: .36rem; }
+div.stop_btn { color: #FFF; height: .4rem; width: 1rem; background: #FEAC1E; line-height: .4rem; text-align: center; border-radius: .2rem; margin: .1rem auto; }
+.left_time { text-align: center; color: #999999; font-size: .15rem; }
+#stopPrinter,#cancelPrinter{visibility: hidden!important;}

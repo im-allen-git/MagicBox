@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: Monospace;
+    font-size: 13px;
+    line-height: 24px;
+    overscroll-behavior: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+canvas {
+    display: block;
+}
+
+#info {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1; /* TODO Solve this in HTML */
+}
+
+a, button, input, select {
+    pointer-events: auto;
+}
+
+.dg.ac {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 2 !important; /* TODO Solve this in HTML */
+}
+
+#overlay {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#overlay > div {
+    text-align: center;
+}
+
+#overlay > div > button {
+    height: 20px;
+    background: transparent;
+    color: #ffffff;
+    outline: 1px solid #ffffff;
+    border: 0px;
+    cursor: pointer;
+}
+
+#overlay > div > p {
+    color: #777777;
+    font-size: 12px;
+}
+#container,#containerModule{
+    display: none;
+    background: #79B1EA; /* Old browsers */
+    background: -moz-linear-gradient(top,  #79B1EA 0%, #4E92EF 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #79B1EA 0%,#4E92EF 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #79B1EA 0%,#4E92EF 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#79B1EA', endColorstr='#4E92EF',GradientType=0 ); /* IE6-9 */
+}
+body{background: #4E92EF; /* Old browsers */height: 100%;}
+.top_menu{border-bottom:1px solid #92CCFFFF;color: #FFF}
+.top_menu .top_menu_btn {line-height: .45rem; font-size: .17rem; }
+.top_menu .top_menu_btn.col-xs-6 {padding: 0}
+
+.name_wrapper{text-align: center;line-height: .6rem; position: relative;}
+#modelName {padding: .05rem .1rem;width: 80%;
+    height: 40px;background: #FFFFFF; box-shadow: 3px 2px 2px 0px rgba(57, 123, 204, 0.64); border-radius: 10px;margin-top: .7rem}
+input#modelName::-webkit-input-placeholder{color: #ACC5DC; line-height: 25px; font-size: .15rem;}
+.validate_name {display:none; color: red; position: absolute; top: .77rem; left: 13%; width: 74%; text-align: left; background: #FFF; line-height: .28rem; }
+.name_note{color: #C3E3FF; line-height: 15px; font-size: 12px;text-align: left;width: 80%;margin:auto;padding: .16rem 0}
+.btn_confirm{background: url("../img/3dPrinting/btn_orig.png");background-repeat: no-repeat;background-size: contain;    background-position: center;width: 1.28rem;height: .4rem;margin:.72rem auto auto auto;color: #FFF;line-height: .4rem;font-size: .18rem;}
+#es6Next{display: none}
+
+
+.modules_slides {display:none; height: 3rem; margin: .60rem 0;position: relative}
+.swiper-container { background-image: url(../img/3dPrinting/module_bg.png); background-size: contain; background-repeat: no-repeat; max-height: 100%; background-position: center;margin: auto; }
+.swiper-wrapper,.swiper-slide{min-height: 3rem;}
+.swiper-button-prev,.swiper-button-next{ color: #FFF; }
+.swiper-button-prev:after,.swiper-button-next:after{ font-size: x-large;}
+.img_wrapper { position: relative; width: 70%; height: inherit; min-height: 3rem;margin: auto; }
+.img_wrapper img{position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 100%; max-height: 100%;}
+.confirm_print{background: url("../img/3dPrinting/btn_print.png");background-repeat: no-repeat;background-size: contain;    background-position: center;width: 1.15rem; height: .5rem; margin: auto;}
+.print_note{font-size: .12rem;color: #C3E3FF;line-height: .15rem;text-align: center}
+
+#loading_data img{left: 45%;}
