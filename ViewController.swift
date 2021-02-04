@@ -303,6 +303,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             break
         case "6":
             let flag: Int = PrinterConfig.checkWifi()
+            
+            webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
+                //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+            }
             webView.evaluateJavaScript("connectStatus('" + String(flag) + "')") { (response, error) in
                 //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
             }
@@ -310,6 +314,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         case "61":
             PrinterConfig.setWifiInfo()
             self.wirteWifiInfo()
+            break
+        case "66":
+            webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
+                //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+            }
             break
         case "7":
             if(StringTools.isNotEmpty(str: PrinterConfig.LOCAL_GCODE) || StringTools.isNotEmpty(str: PrinterConfig.GEN_GCODE)){
@@ -346,8 +355,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         
         switch message.name {
         case "jumpPage":
-            let code = message.body
-            checkAndJump(code: code as! String)
+            let code = message.body  as! String
+            if(code == "5"){
+                checkAndJump(code: beforeCode)
+            } else{
+                checkAndJump(code: code)
+            }
+            
             break
         case "logMessage":
             print(message.body)
