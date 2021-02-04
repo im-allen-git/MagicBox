@@ -481,7 +481,7 @@ function listModule( type ) {
 				cartoonHtml += '</div>';
 				cartoonIndex ++;
 			}
-			cartoonHtml += '<div class="go_shopping" onclick=" goPage(2) ">购买模型</div>';
+			// cartoonHtml += '<div class="go_shopping" onclick=" goPage(2) ">购买模型</div>';
 			$( ".cartoon_wrapper" ).html( cartoonHtml );
 
 			var houstHtml = '<div class="child_title" onclick="swichToNormalModule(this)"><i class="iconfont arrow">&#xe720;</i>我的世界</div>';

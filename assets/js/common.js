@@ -67,4 +67,7 @@ function firstCheck(access, build, myworld){//0 没有访问过  1 访问过
     firstMyWorld = myworld;
     
 }
-///
+
+function menuCenterClean(){
+    $(".menu_title").text('')
+}

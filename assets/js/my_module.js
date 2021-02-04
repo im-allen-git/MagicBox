@@ -266,8 +266,8 @@ function deletedAfter(deletedSuccFlag){
                 var stlListHTML='<div class="no_module">您还没有创建模型哦<br><span onclick=" goPage(4) ">点击这里创建模型</span></div>'
                 $(".mine_content").html(stlListHTML);
             } else if(allModule.hasClass("mine_content")){
-                var stlListHTML='<div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>'
-                $(".bought_content").html(stlListHTML);
+                // var stlListHTML='<div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>'
+                // $(".bought_content").html(stlListHTML);
             }
             else if(allModule.hasClass("local_content")){
                 var stlListHTML='<div class="no_module">您还没有本地模型哦</div>'
@@ -325,8 +325,8 @@ function deleteSDModule(obj,name){
                         var stlListHTML='<div class="no_module">您还没有创建模型哦<br><span onclick=" goPage(4) ">点击这里创建模型</span></div>'
                         $(".mine_content").html(stlListHTML);
                     } else if(allModule.hasClass("mine_content")){
-                        var stlListHTML='<div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>'
-                        $(".bought_content").html(stlListHTML);
+                        // var stlListHTML='<div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>'
+                        // $(".bought_content").html(stlListHTML);
                     }
                     else if(allModule.hasClass("local_content")){
                         var stlListHTML='<div class="no_module">您还没有本地模型哦</div>'

@@ -28,7 +28,7 @@
             </div>
             <div class="main_wrapper">
                 <div class="container">
-                    <div class="sec_menu row clearfix">
+                    <!--<div class="sec_menu row clearfix">
                         <div class="sec_menu_btn mine col-xs-4" onclick="showCurrentModule(0)">
                             <div class="sec_btn active_menu">我的创造</div>
                         </div>
@@ -38,14 +38,23 @@
                         <div class="sec_menu_btn local col-xs-4" onclick="showCurrentModule(2)">
                             <div class="sec_btn">SD卡模型</div>
                         </div>
+                    </div>-->
+                    <div class="sec_menu row clearfix">
+                        <div class="sec_menu_btn mine col-xs-6" onclick="showCurrentModule(0)">
+                            <div class="sec_btn active_menu">我的创造</div>
+                        </div>
+
+                        <div class="sec_menu_btn local col-xs-6" onclick="showCurrentModule(2)">
+                            <div class="sec_btn">SD卡模型</div>
+                        </div>
                     </div>
                     <div class="content_wrapper row clearfix" id="contentModule">
                         <div class="mine_content module_content">
                             <div class="no_module">您还没有创建模型哦<br><span onclick=" goPage(4) ">点击这里创建模型</span></div>
                         </div>
-                        <div class="bought_content module_content">
+                       <!-- <div class="bought_content module_content">
                             <div class="no_module">您还没有购买哦，<span onclick=" goPage(2) ">点击这里浏览</span></div>
-                        </div>
+                        </div>-->
                         <div class="local_content module_content">
                             <div class="no_module">您的SD卡中，还没有模型哦</div>
                         </div>

@@ -141,6 +141,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         webView.scrollView.alwaysBounceVertical = true
         webView.navigationDelegate = self
         webView.scrollView.bounces = false
+    
+        
         return webView
     }()
     
@@ -164,19 +166,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         //self.ssidInputText.borderStyle =  UITextField.BorderStyle.none;
         self.hideKeyboardWhenTappedAround() ;
         
-        
-        // screenWidth = self.view.frame.width      //the main screen size of width;
-        // screenHeight = self.view.frame.height    //the main screen size of height;
-        
-        screenHeight = UIScreen.main.bounds.height
-        screenWidth = UIScreen.main.bounds.width
-        
-        if(StringTools.isEmpty(str: message)){
-            loadHtml(htmlUrl: HtmlConfig.FIRST_WELCOME)
-        } else{
-            checkAndJump(code: message)
-        }
-        
         if(codeStl == "-1" ){
             if(netCount < 3 && netFlag == "0"){
                 checkServerNet()
@@ -187,12 +176,51 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             
         }
         
+        // screenWidth = self.view.frame.width      //the main screen size of width;
+        // screenHeight = self.view.frame.height    //the main screen size of height;
+        
+        screenHeight = UIScreen.main.bounds.height
+        screenWidth = UIScreen.main.bounds.width
+        
+        
+        if(StringTools.isEmpty(str: message)){
+//            loadHtml(htmlUrl: HtmlConfig.FIRST_WELCOME)
+            checkAndJump(code: "-1")
+        } else{
+            checkAndJump(code: message)
+        }
+        
+        
     }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    func checkRotation(code: String){
+        print("screenWidth:")
+        print(screenWidth)
+        print("screenHeight:")
+        print(screenHeight)
         
-        StlDealTools.webView = webView
+        firstAccessCount = 0;
+        isFlag = false;
+        beforeCode = codeStl;
+        codeStl = code;
+        StlDealTools.code = codeStl
         
+        if(codeStl == "4"){
+            if #available(iOS 11.0, *){
+               self.webView.scrollView.contentInsetAdjustmentBehavior = .never;
+           }
+            isFlag = true
+        } else{
+            isFlag = false
+            if #available(iOS 11.0, *){
+               self.webView.scrollView.contentInsetAdjustmentBehavior = .always;
+           }
+        }
+//        if(codeStl == "-1"){
+//            if #available(iOS 11.0, *){
+//               self.webView.scrollView.contentInsetAdjustmentBehavior = .never;
+//           }
+//            isFlag = false
+//        }
         if(isFlag){
             let rotation : UIInterfaceOrientationMask = [.landscapeLeft, .landscapeRight]
             appDeleagte.blockRotation = rotation
@@ -202,7 +230,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             appDeleagte.blockRotation = rotation
             self.webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         }
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
+        StlDealTools.webView = webView
+    
         print("----code"+codeStl+"-----")
         switch(codeStl){
             
@@ -383,7 +415,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                     if(codeStl == "10"){
                         // 首次进入的成功直接跳转到我的模型，否则重试
                         if(isSu){
-                            checkAndJump(code: "1")
+                            checkAndJump(code: "66")
                         } else {
                             firstAccessCount = firstAccessCount + 1
                             if(firstAccessCount < 3){
@@ -534,85 +566,63 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     
     func checkAndJump(code : String){
         
-        firstAccessCount = 0;
-        isFlag = false;
-        beforeCode = codeStl;
-        codeStl = code;
+        checkRotation(code: code);
         
-        StlDealTools.code = codeStl
+        
         switch code {
         case "1":
             // 我的模型
             loadHtml(htmlUrl : HtmlConfig.MYMODULE_HTML)
+            break;
         case "2":
             // 店铺
             loadHtml(htmlUrl : HtmlConfig.SHOP_HTML)
+            break;
         case "3":
             // 首页
             loadHtml(htmlUrl : HtmlConfig.INDEX_HTML)
+            break;
         case "4":
-            isFlag = true
-//            print("Flag::" + String(isFlag))
-            if(isFlag){
-                let rotation : UIInterfaceOrientationMask = [.landscapeLeft, .landscapeRight]
-                appDeleagte.blockRotation = rotation
-                self.webView.frame = CGRect(x: 0, y: 0, width: screenHeight, height: screenWidth )
-            } else{
-                let rotation : UIInterfaceOrientationMask = [.portrait]
-                appDeleagte.blockRotation = rotation
-                self.webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
-            }
-            // self.webView.frame = CGRect(x: 0, y: 0, width: screenHeight, height: screenWidth )
-            // 创建模型
             loadHtml(htmlUrl : HtmlConfig.BULID_MODULE_URL)
+            break;
         case "5":
             // 返回
             loadHtml(htmlUrl : HtmlConfig.PRINTER_INTRO_HTML)
+            break;
         case "6":
             // 是否链接打印机
             loadHtml(htmlUrl : HtmlConfig.PRINTER_INTRO_HTML)
+            break;
         case "61":
             // 设置ESPTouch界面
             loadHtml(htmlUrl : HtmlConfig.WIFI_PASS_HTML)
+            break;
         case "66":
             // 第一次链接打印机
             loadHtml(htmlUrl : HtmlConfig.PRINTER_INTRO_FIRST_HTML)
+            break;
         case "7":
             // 打印机状态界面
             loadHtml(htmlUrl : HtmlConfig.PRINTER_STATUS_HTML)
+            break;
         case "8":
             loadHtml(htmlUrl : HtmlConfig.INDEX_HTML)
+            break;
         case "9":
             // 欢迎页面
             loadHtml(htmlUrl : HtmlConfig.WELCOME_SLIDE)
+            break;
         case "10":
             // 定制我的模型页面
             loadHtml(htmlUrl : HtmlConfig.CUSTOMIZE_HTML)
+            break;
+        case "-1":
+            loadHtml(htmlUrl: HtmlConfig.FIRST_WELCOME)
+            break;
         default:
             codeStl = "0"
-            break
         }
-        if(codeStl == "4"){
-            print("screenWidth:")
-            print(screenWidth)
-            print("screenHeight:")
-            print(screenHeight)
-            isFlag = true
-            //强制设置成横屏
-            //进入下一页面，转换为横屏
-            //            let rotation : UIInterfaceOrientationMask = [.landscapeLeft, .landscapeRight]
-            //            appDeleagte.blockRotation = rotation
-            //            self.webView.frame = CGRect(x: 0, y: 0, width: screenHeight, height: screenWidth )
-            //            let secondView = BulidModuleController()
-            //            //跳转
-            //            self.navigationController?.pushViewController(secondView , animated: true)
-        } else{
-            isFlag = false
-            
-            //            let rotation : UIInterfaceOrientationMask = [.portrait]
-            //            appDeleagte.blockRotation = rotation
-            //            self.webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
-        }
+        
     }
     
     

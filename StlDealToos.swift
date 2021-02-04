@@ -139,10 +139,10 @@ class StlDealTools: NSObject {
         let stlPathPre = HtmlConfig.FILE_BUNDEL_PATH + "models/stl/localModules/"
         if(localStlList.isEmpty){
             localStlList = [String]()
-            let  kitty: StlGcode = StlGcode(id:1, sourceStlName:"hello_kitty.stl",realStlName:stlPathPre + "hello_kitty.stl",sourceZipStlName:"",serverZipGcodeName:"",localGcodeName:stlPathPre + "hello_kitty.gco",createTime:"",
-                                            localImg:stlPathPre + "hello_kitty.png",length:"X:74.01",width:"Y:51.22",height:"Z:100.93",size:"18.20M",material:"7318cm",exeTime:(1025*60),exeTimeStr:self.getTimeStr(count: (200 + (1025*60)) * PrinterConfig.SECOND_TIME),flag:1,localFlag:1, urlStl: "", urlImg: "")
-            localStlList.append(kitty.getJsonString())
-            localMapStl[kitty.getShortLocalGcodeName()] = kitty
+//            let  kitty: StlGcode = StlGcode(id:1, sourceStlName:"hello_kitty.stl",realStlName:stlPathPre + "hello_kitty.stl",sourceZipStlName:"",serverZipGcodeName:"",localGcodeName:stlPathPre + "hello_kitty.gco",createTime:"",
+//                                            localImg:stlPathPre + "hello_kitty.png",length:"X:74.01",width:"Y:51.22",height:"Z:100.93",size:"18.20M",material:"7318cm",exeTime:(1025*60),exeTimeStr:self.getTimeStr(count: (200 + (1025*60)) * PrinterConfig.SECOND_TIME),flag:1,localFlag:1, urlStl: "", urlImg: "")
+//            localStlList.append(kitty.getJsonString())
+//            localMapStl[kitty.getShortLocalGcodeName()] = kitty
             
             
             let  chamaeleo_t: StlGcode = StlGcode(id:2, sourceStlName:"chamaeleo_t.stl",realStlName:stlPathPre + "chamaeleo_t.stl",sourceZipStlName:"",serverZipGcodeName:"",localGcodeName:stlPathPre + "chamaeleo_t.gco",createTime:"",

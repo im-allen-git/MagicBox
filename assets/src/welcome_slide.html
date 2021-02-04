@@ -10,7 +10,7 @@
     <link type="text/css" rel="stylesheet" href="../css/common.css">
     <link type="text/css" rel="stylesheet" href="../css/swiper.min.css">
     <style>
-		.main_wrapper,body,.swiper-container{width:100%;height:100%;}
+		.main_wrapper,body,.swiper-container{width:100%;height:100%;overflow:hidden;}
 		.top_title {color:#005AB8;font-size:.25rem;text-align:center;margin-top:.8rem;}
 		.sub_title {color:#8EB8E3;font-size:.15rem;text-align:center;margin-top:.2rem;line-height:.2rem;}
 		.img_wrapper{position: relative;width:2.7rem;height:2.7rem;margin:.7rem auto 0;}
@@ -72,6 +72,7 @@
       },
 
 	} );
+	$(".main_wrapper,body,html,.swiper-container").css({"height":window.innerHeight,"width":window.innerWidth})
     function jumpToindex(){
         $("#loading_data").show();
         try{
