@@ -19,6 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         espTouchNetworkDelegate.tryOpenNetworkPermission()
         FirebaseApp.configure()
+        if #available(iOS 11, *) {  //有安全区（刘海）的是true， 正常的是false
+              guard let w = UIApplication.shared.delegate?.window, let unwrapedWindow = w else {
+                WebHost.isFullScreen = false
+                return false
+              }
+              
+              if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
+                  print(unwrapedWindow.safeAreaInsets)
+                WebHost.isFullScreen = true
+              }
+        }
+        else{
+            WebHost.isFullScreen = false
+        }
+        print("WebHost.isFullScreen")
+        print(WebHost.isFullScreen)
+        
         return true
     }
     
@@ -100,8 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
+        
 }
 
 extension NSURLRequest{

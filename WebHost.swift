@@ -14,6 +14,7 @@ import Alamofire
 // 定义一个模型 该模型实现SwiftJavaScriptDelegate协议
 class  WebHost : NSObject{
     
+    static var isFullScreen:Bool = false; //有安全区（刘海）的是true， 正常的是false
     
     static func getRadomFileName(){
         
@@ -215,8 +216,7 @@ class  WebHost : NSObject{
             print("显示打印信息")
         }
     }
-  
-    
+      
 }
 
 

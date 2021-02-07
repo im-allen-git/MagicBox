@@ -206,13 +206,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         
         if(codeStl == "4"){
             if #available(iOS 11.0, *){
-               self.webView.scrollView.contentInsetAdjustmentBehavior = .never;
+                if(WebHost.isFullScreen){
+                    self.webView.scrollView.contentInsetAdjustmentBehavior = .never;
+                }
            }
             isFlag = true
         } else{
             isFlag = false
             if #available(iOS 11.0, *){
-               self.webView.scrollView.contentInsetAdjustmentBehavior = .always;
+                if(WebHost.isFullScreen){
+                    self.webView.scrollView.contentInsetAdjustmentBehavior = .always;
+                }
            }
         }
 //        if(codeStl == "-1"){
@@ -303,9 +307,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             break
         case "6":
             let flag: Int = PrinterConfig.checkWifi()
-            
-            webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
-                //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+            if #available(iOS 11.0, *){
+                if(WebHost.isFullScreen){
+                    webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
+                        //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+                    }
+                }
             }
             webView.evaluateJavaScript("connectStatus('" + String(flag) + "')") { (response, error) in
                 //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
@@ -316,8 +323,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             self.wirteWifiInfo()
             break
         case "66":
-            webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
-                //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+            if #available(iOS 11.0, *){
+                if(WebHost.isFullScreen){
+                    webView.evaluateJavaScript("menuCenterClean()") { (response, error) in
+                        //print("response:", response ?? "No Response", "\n", "error:", error ?? "No Error")
+                    }
+                }
             }
             break
         case "7":
@@ -349,8 +360,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         }
         
     }
-    
-    
+
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
         switch message.name {
