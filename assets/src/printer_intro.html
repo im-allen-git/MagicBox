@@ -27,8 +27,11 @@
         <div>WiFi连接</div>
       </div>
     </div>
-    <div class="connect_btn text-center" onclick="goPage('61')">
+    <div class="connect_btn text-center" onclick="goPage('61')" id="connectWifi">
       <img src="../img/btn_connect.png" alt="">
+    </div>
+    <div class="connect_btn text-center" onclick="goPage('61')" id="resetWifi">
+      <img src="../img/reset_btn.png" alt="">
     </div>
     <div class="intro">
       <div class="col-xs-12 text-left">1.确定手机已链接WiFi网络</div>
@@ -47,6 +50,8 @@
         if(flag>0){
             $(".connect_state").addClass("connected");
             $(".connect_state").html('<i class="connect_status"></i>已连接');
+            $("#connectWifi").hide();
+            $("#resetWifi").show();
         }
     }
 </script>

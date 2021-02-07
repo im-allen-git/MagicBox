@@ -319,6 +319,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             }
             break
         case "61":
+            PrinterConfig.resetWifiInfo()
             PrinterConfig.setWifiInfo()
             self.wirteWifiInfo()
             break
@@ -705,13 +706,23 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         self.okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: {
             action in if(self.beforeCode == "66"){
                 // 如果没有定制，则跳转到定制页面
-                self.checkAndJump(code: "10")
+                if(StringTools.isNotEmpty(str: PrinterConfig.ESP_8266_URL)){
+                    self.checkAndJump(code: "3")
+                }
+                else{
+                    self.checkAndJump(code: "66")
+                }
                 
             }else{
                 if(StringTools.isNotEmpty(str: PrinterConfig.ESP_8266_URL) && (StringTools.isNotEmpty(str: PrinterConfig.GEN_GCODE) || StringTools.isNotEmpty(str: PrinterConfig.LOCAL_GCODE))){
                     self.checkAndJump(code: "7")
                 } else{
-                    self.checkAndJump(code: "5")
+                    if( nil == PrinterConfig.STL_GCODE || StringTools.isEmpty(str: (PrinterConfig.STL_GCODE?.localGcodeName)!)){
+                        self.checkAndJump(code: "3")
+                    }
+                    else{
+                        self.checkAndJump(code: "5")
+                    }
                 }
             }
         })

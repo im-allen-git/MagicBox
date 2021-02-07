@@ -71,4 +71,13 @@ class PrinterConfig : NSObject{
         }
     }
     
+    
+    static func resetWifiInfo(){
+        PrinterConfig.ESP_8266_URL = "";
+        var isSu = FileTools.saveToPlist(keyName: ServerConfig.WiFi_URL_KEY, val: PrinterConfig.ESP_8266_URL)
+        if(!isSu){
+            isSu = FileTools.saveToPlist(keyName: ServerConfig.WiFi_URL_KEY, val: PrinterConfig.ESP_8266_URL)
+        }
+    }
+    
 }
