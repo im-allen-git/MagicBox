@@ -9,7 +9,7 @@
 import Foundation
 class ServerConfig : NSObject {
     
-    static let  SERVER_URL_PRE: String = "https://192.168.1.67"
+    static let  SERVER_URL_PRE: String = "https://3d.import-express.com"
     
     // 上传stl生成gcode路径
     static let  FILE_UPLOAD_URL: String = SERVER_URL_PRE + "/file/uploadFileAndGenGcodeIos"
