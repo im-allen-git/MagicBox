@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>325905078682-g0bbrh1e4la3nglt5kq0t2urpi93juk5.apps.googleusercontent.com</string>
+	<string>510538891718-0pdtaf89o69mirgp1hd2ab93vs8etgnf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.325905078682-g0bbrh1e4la3nglt5kq0t2urpi93juk5</string>
+	<string>com.googleusercontent.apps.510538891718-0pdtaf89o69mirgp1hd2ab93vs8etgnf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCo5_5uiVrn0e_ncRyMBgG_uMuuJd5s8gk</string>
+	<string>AIzaSyApBKOKZiLK6W5ejuwqgBnH7E_hTqWwzyc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>325905078682</string>
+	<string>510538891718</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.kairong.magicbox</string>
 	<key>PROJECT_ID</key>
-	<string>d-magic-box</string>
+	<string>kai-rong-apps</string>
 	<key>STORAGE_BUCKET</key>
-	<string>d-magic-box.appspot.com</string>
+	<string>kai-rong-apps.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:325905078682:ios:45d90c16f02c78da41c223</string>
+	<string>1:510538891718:ios:2b07201b76683a1be972c7</string>
 </dict>
 </plist>
